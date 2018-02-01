@@ -13,7 +13,6 @@ export class CoursesComponent implements OnInit {
 
    title = "List of courses";
    courses;
-   name = ''
    imageUrl = 'https://picsum.photos/200/300'
 
    iAm: string = "I am a typescript property I think."
@@ -39,6 +38,9 @@ export class CoursesComponent implements OnInit {
    If you should fall
    Into my arms
    And tremble like a flower`
+
+   todo: string = ""
+   todos: string[] = []
    
    clickHandler(e) {
       e.stopPropagation()
@@ -55,6 +57,17 @@ export class CoursesComponent implements OnInit {
    
    onSubmitEmail() {
       alert(this.email)
+   }
+
+   onSubmit() {
+      this.todos.unshift(this.todo)
+      this.todo = ''
+   }
+
+   onDeleteItem(i) {
+      this.todos.splice(i, 1)
+      console.log("todo deleted: ", i);
+      
    }
 
    ngOnInit() {}

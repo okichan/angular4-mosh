@@ -2,6 +2,19 @@ body {
    padding: 1rem;
 }
 
+.red {
+   transition: .3s;
+   &:hover {
+      color: tomato;
+      cursor: pointer;
+   }
+}
+
+.test {
+   border: 1px solid #f0f;
+}
+
+// page loader
 $animationLength: 1.5s;
 $animationRadius: 12px;
 $dotSize: 8px;

@@ -1,65 +1,85 @@
-<h2>{{ title }}</h2>
-<ul>
-   <li *ngFor="let course of courses">{{ course }}</li>
-</ul>
+<div class="container-fluid">
+   <h1>Angular 4!</h1>
+   <hr>
 
-<input type="text" [(ngModel)]="name" />
-<p>{{ name }}</p>
+   <div class="row">
+      <div class="form-group col">
+         <form (submit)="onSubmit()">
+            <label for="">Todo List:</label>
+            <input [(ngModel)]="todo" name="name" type="text" class="form-control">
+            <input type="submit" value="Add!" class="btn btn-success mb-0">
+         </form>
+      </div>
+      <ul class="list-group col">
+         <li class="list-group-item" *ngFor="let todo of todos; let i = index">
+            {{ todo }}
+            <span (click)="onDeleteItem(i)" class="typcn typcn-trash red float-right"></span>
+         </li>
+      </ul>
+   </div>
+   <hr>
 
-<img src="{{ imageUrl }}" alt="">
-<hr>
-<img [src]="imageUrl" alt="">
-<p [textContent]="iAm"></p>
-<p>{{ iAm }}</p>
+   <h2>{{ title }}</h2>
+   <ul>
+      <li *ngFor="let course of courses">{{ course }}</li>
+   </ul>
 
-<table>
-   <tr>
-      <td [attr.colSpan]="colSpan"></td>
-      <td>volvo</td>
-   </tr>
-   <tr>
-      <td>volvo</td>
-      <td>volvo</td>
-      <td>volvo</td>
-   </tr>
-</table>
-<hr>
-<p>class binding</p>
-<button class="btn btn-info" [class.disabled]="isDisabled">hit me</button>
-<hr>
+   <img src="{{ imageUrl }}" alt="">
+   <hr>
+   <img [src]="imageUrl" alt="">
+   <p [textContent]="iAm"></p>
+   <p>{{ iAm }}</p>
 
-<p>style binding</p>
-<button class="btn btn-info" [style.color]="isActive ? 'white' : 'seagreen'">hit me</button>
-<hr>
-<span>event binding and event bubbling (stopPropagation)</span>
-<div (click)="divClicked()">
-   <button (click)="clickHandler($event)">Click me</button>
+   <table>
+      <tr>
+         <td [attr.colSpan]="colSpan"></td>
+         <td>volvo</td>
+      </tr>
+      <tr>
+         <td>volvo</td>
+         <td>volvo</td>
+         <td>volvo</td>
+      </tr>
+   </table>
+   <hr>
+   <p>class binding</p>
+   <button class="btn btn-info" [class.disabled]="isDisabled">hit me</button>
+   <hr>
+
+   <p>style binding</p>
+   <button class="btn btn-info" [style.color]="isActive ? 'white' : 'seagreen'">hit me</button>
+   <hr>
+   <span>event binding and event bubbling (stopPropagation)</span>
+   <div (click)="divClicked()">
+      <button (click)="clickHandler($event)">Click me</button>
+   </div>
+   <hr>
+   <p>Keyup.enter</p>
+   <input (keyup.enter)="onKeyUp()">
+   <hr>
+   <p>Template variable (#email)</p>
+   <input [value]="email" (keyup.enter)="email = $event.target.value; onSubmitEmail()">
+   <p>Two-way binding (ngModel)</p>
+   <input [(ngModel)]="email" (keyup.enter)="onSubmitEmail()">
+   <hr>
+   <p>Pipe</p>
+   <p>
+      {{ price | currency:'JPY':"symbol":'1.0-0' }}
+   </p>
+   <p>
+      {{ price | number }}
+   </p>
+   <p>
+      {{ 1.44 | number:'1.5-9' }}
+   </p>
+   <p>
+      {{ email | uppercase }}
+   </p>
+   <p>
+      {{ date | date:'yyyy-MM-dd HH:mm' }}
+   </p>
+   <hr>
+   <p>Custom Pipe</p>
+   {{ aLongText | summary:393 }}
+
 </div>
-<hr>
-<p>Keyup.enter</p>
-<input (keyup.enter)="onKeyUp()">
-<hr>
-<p>Template variable (#email)</p>
-<input [value]="email" (keyup.enter)="email = $event.target.value; onSubmitEmail()">
-<p>Two-way binding (ngModel)</p>
-<input [(ngModel)]="email" (keyup.enter)="onSubmitEmail()">
-<hr>
-<p>Pipe</p>
-<p>
-   {{ price | currency:'JPY':"symbol":'1.0-0' }}
-</p>
-<p>
-   {{ price | number }}
-</p>
-<p>
-   {{ 1.44 | number:'1.5-9' }}
-</p>
-<p>
-   {{ email | uppercase }}
-</p>
-<p>
-   {{ date | date:'yyyy-MM-dd HH:mm' }}
-</p>
-<hr>
-<p>Custom Pipe</p>
-{{ aLongText | summary:393 }}

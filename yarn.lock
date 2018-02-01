@@ -6956,6 +6956,10 @@ typescript@~2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
 
+typicons.font@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/typicons.font/-/typicons.font-2.0.9.tgz#caa15c3d0c92219356342d9ca138adda793b9548"
+
 uglify-es@^3.3.4:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.9.tgz#0c1c4f0700bed8dbc124cdb304d2592ca203e677"
