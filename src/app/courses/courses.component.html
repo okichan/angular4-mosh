@@ -36,6 +36,30 @@
    <button (click)="clickHandler($event)">Click me</button>
 </div>
 <hr>
-<p>Keyup</p>
+<p>Keyup.enter</p>
 <input (keyup.enter)="onKeyUp()">
 <hr>
+<p>Template variable (#email)</p>
+<input [value]="email" (keyup.enter)="email = $event.target.value; onSubmitEmail()">
+<p>Two-way binding (ngModel)</p>
+<input [(ngModel)]="email" (keyup.enter)="onSubmitEmail()">
+<hr>
+<p>Pipe</p>
+<p>
+   {{ price | currency:'JPY':"symbol":'1.0-0' }}
+</p>
+<p>
+   {{ price | number }}
+</p>
+<p>
+   {{ 1.44 | number:'1.5-9' }}
+</p>
+<p>
+   {{ email | uppercase }}
+</p>
+<p>
+   {{ date | date:'yyyy-MM-dd HH:mm' }}
+</p>
+<hr>
+<p>Custom Pipe</p>
+{{ aLongText | summary:393 }}
