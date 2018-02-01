@@ -21,26 +21,15 @@ export class CoursesComponent implements OnInit {
    email: string = "me@example.com"
    price: number = 1980
    date = new Date()
-   aLongText:string = `Let's dance put on your red shoes and dance the blues
-
-   Let's dance to the song 
-   they're playin' on the radio
-   
-   Let's sway 
-   while color lights up your face
-   Let's sway 
-   sway through the crowd to an empty space
-   
-   If you say run, I'll run with you
-   If you say hide, we'll hide
-   Because my love for you
-   Would break my heart in two
-   If you should fall
-   Into my arms
-   And tremble like a flower`
-
+   aLongText = ALongText
    todo: string = ""
    todos: string[] = []
+   user = {
+      name: '',
+      email: '',
+      phone: ''
+   }
+
    
    clickHandler(e) {
       e.stopPropagation()
@@ -67,8 +56,37 @@ export class CoursesComponent implements OnInit {
    onDeleteItem(i) {
       this.todos.splice(i, 1)
       console.log("todo deleted: ", i);
-      
    }
 
+   onSubmitForm({value, valid}) {
+      if(valid) {
+         console.log(value);
+         
+      } else {
+         console.log("Form is invalid.");
+         
+      }
+   }
+   
    ngOnInit() {}
 }
+
+const ALongText = `
+Let's dance put on your red shoes and dance the blues
+
+   Let's dance to the song 
+   they're playin' on the radio
+   
+   Let's sway 
+   while color lights up your face
+   Let's sway 
+   sway through the crowd to an empty space
+   
+   If you say run, I'll run with you
+   If you say hide, we'll hide
+   Because my love for you
+   Would break my heart in two
+   If you should fall
+   Into my arms
+   And tremble like a flower
+`
