@@ -1,0 +1,11 @@
+table {
+   td {
+      border: 1px dotted saddlebrown;
+      padding: 1em;
+   }
+}
+
+.disabled {
+   cursor: not-allowed;
+   opacity: .3;
+}
