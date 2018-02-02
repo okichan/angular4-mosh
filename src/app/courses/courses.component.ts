@@ -17,7 +17,8 @@ export class CoursesComponent implements OnInit {
 
    iAm: string = "I am a typescript property I think."
    isDisabled = true
-   
+   isActive = true
+   isValid = false
    email: string = "me@example.com"
    price: number = 1980
    date = new Date()
@@ -48,9 +49,11 @@ export class CoursesComponent implements OnInit {
       alert(this.email)
    }
 
-   onSubmit() {
-      this.todos.unshift(this.todo)
-      this.todo = ''
+   onSubmit({value, valid}) {
+      if (valid) {
+         this.todos.unshift(this.todo)
+         this.todo = ''
+      } 
    }
 
    onDeleteItem(i) {
