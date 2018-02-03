@@ -13,7 +13,7 @@ export class CoursesComponent implements OnInit {
 
    title = "List of courses";
    courses;
-   imageUrl = 'https://picsum.photos/200/300'
+   imageUrl = '/assets/images/dog.jpg'
 
    iAm: string = "I am a typescript property I think."
    isDisabled = true
