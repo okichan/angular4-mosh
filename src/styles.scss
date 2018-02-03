@@ -18,6 +18,10 @@ body {
    cursor: pointer
 }
 
+.form-control.ng-touched.ng-invalid {
+   border: 2px dotted tomato;
+}
+
 // page loader
 $animationLength: 1.5s;
 $animationRadius: 12px;

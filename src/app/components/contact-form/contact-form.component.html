@@ -1,0 +1,91 @@
+<form #f="ngForm"
+      (ngSubmit)="submit(f)">
+   <div ngModelGroup="contact"
+        #contact="ngModelGroup">
+      <!-- <div *ngIf="!contact.valid">...</div> -->
+      <div class="form-group">
+         <label for="firstName">First Name</label>
+         <input required
+                minlength="2"
+                maxlength="10"
+                pattern="[a-zA-Z]*"
+                ngModel
+                name="firstName"
+                #firstName="ngModel"
+                (change)="log(firstName)"
+                id="firstName"
+                type="text"
+                class="form-control">
+      </div>
+      <div class="alert alert-danger"
+           *ngIf="!firstName.valid && firstName.touched">
+         <div *ngIf="firstName?.errors?.required">First name is required.</div>
+         <div *ngIf="firstName?.errors?.minlength">First name should be minimum {{ firstName.errors.minlength.requiredLength }} characters.</div>
+         <div *ngIf="firstName?.errors?.pattern">First name should only contain characters.</div>
+      </div>
+      <div class="form-group">
+         <label for="lastName">Last Name</label>
+         <input required
+                minlength="2"
+                maxlength="10"
+                pattern="[a-zA-Z]*"
+                ngModel
+                name="lastName"
+                (change)="log(lastName)"
+                #lastName="ngModel"
+                id="lastName"
+                type="text"
+                class="form-control">
+      </div>
+      <div class="alert alert-danger"
+           *ngIf="!lastName.valid && lastName.touched">
+         <div *ngIf="lastName?.errors?.required">Last name is required.</div>
+         <div *ngIf="lastName?.errors?.minlength">Last name should be minimum {{ lastName.errors.minlength.requiredLength }} characters.</div>
+         <div *ngIf="lastName?.errors?.pattern">Last name should only contain characters.</div>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea ngModel
+                name="comment"
+                id="comment"
+                cols="30"
+                rows="10"
+                class="form-control">
+      </textarea>
+   </div>
+   <div class="checkbox">
+      <label for="">
+         <input type="checkbox"
+                ngModel
+                name="isSubscribed">Subscribe to mailing list
+      </label>
+   </div>
+   <div class="form-group">
+      <label for="contactMethod"></label>
+      <select name="contactMethod"
+              ngModel
+              id="contactMethod"
+              class="form-control">
+         <option value=""></option>
+         <option *ngFor="let method of contactMethods"
+                 [value]="method.id">{{ method.name }}
+         </option>
+      </select>
+   </div>
+   <div *ngFor="let method of contactMethods"
+        class="radio">
+      <label>
+         <input ngModel
+                type="radio"
+                name="contactMethod"
+                [value]="method.id">
+                {{ method.name }}
+      </label>
+   </div>
+   
+   <p>{{ f.value | json }}</p>
+   
+   <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
