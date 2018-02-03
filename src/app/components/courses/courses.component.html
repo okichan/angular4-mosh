@@ -6,7 +6,7 @@
          <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form)">
             <label>Todo List:</label>
             <input type="text" class="form-control" name="todo" [(ngModel)]="todo" #todoItem="ngModel" minlength="3" required>
-            <p *ngIf="todoItem.errors?.minlength && todoItem.touched" class="text-danger">Todo too short!
+            <p *ngIf="!todoItem.valid && todoItem.touched" class="text-danger">Todo too short!
             </p>
             <input type="submit" value="Add!" class="btn btn-success mb-0" [class.disabled]="todoItem.errors?.minlength || todoItem.errors?.required">
          </form>
@@ -24,7 +24,11 @@
    <ul>
       <li *ngFor="let course of courses">{{ course }}</li>
    </ul>
-
+   <hr>
+   <ul class="list-group">
+      <li class="list-group-item" *ngFor="let d of ep36Data">{{ d }}</li>
+   </ul>
+   <hr>
    <img src="{{ imageUrl }}" alt="">
    <img [src]="imageUrl" alt="">
    <p [textContent]="iAm"></p>
@@ -128,4 +132,5 @@
    <ul>
       <li *ngFor="let user of users">{{ user }}</li>
    </ul>
+
 </div>

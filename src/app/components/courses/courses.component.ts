@@ -9,11 +9,15 @@ import { CoursesService } from "./courses.service";
 })
 export class CoursesComponent implements OnInit {
    
-   constructor(service: CoursesService, dataservice: DataService) {
+   constructor(service: CoursesService, public dataservice: DataService) {
       this.courses = service.getCourses()
       this.users = dataservice.getUsers();
+      this.dataservice.getData().subscribe(data => {
+         this.ep36Data.push(data)
+      })
    }
    
+   ep36Data: any[] = []
    title = "List of courses";
    courses;
    users: string[]
