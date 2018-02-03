@@ -11,7 +11,7 @@ export class CoursesComponent implements OnInit {
    
    constructor(service: CoursesService, public dataservice: DataService) {
       this.courses = service.getCourses()
-      this.users = dataservice.getUsers();
+      this.users = dataservice.getUsersTest();
       this.dataservice.getData().subscribe(data => {
          this.ep36Data.push(data)
       })

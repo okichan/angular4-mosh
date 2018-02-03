@@ -3,6 +3,7 @@ import { CoursesService } from './components/courses/courses.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './components/courses/courses.component';
@@ -22,6 +23,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule
   ],
   providers: [CoursesService, DataService],
   bootstrap: [AppComponent]
