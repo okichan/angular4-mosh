@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from "@angular/core";
 import { CoursesService } from "./courses.service";
 
@@ -7,13 +8,16 @@ import { CoursesService } from "./courses.service";
    styleUrls: ["./courses.component.scss"]
 })
 export class CoursesComponent implements OnInit {
-   constructor(service: CoursesService) {
+   
+   constructor(service: CoursesService, dataservice: DataService) {
       this.courses = service.getCourses()
+      this.users = dataservice.getUsers();
    }
-
+   
    title = "List of courses";
    courses;
-   imageUrl = '/assets/images/dog.jpg'
+   users: string[]
+   imageUrl = 'https://picsum.photos/50/50?random'
 
    iAm: string = "I am a typescript property I think."
    isDisabled = true
