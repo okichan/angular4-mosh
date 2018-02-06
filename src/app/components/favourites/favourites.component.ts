@@ -15,6 +15,9 @@ export class FavouritesComponent {
       email: '',
       phone: ''
    }
+
+   isEdit: boolean = false
+
    constructor(public dataService: DataService) {
       this.isFavourite = false
       this.dataService.getUsers().subscribe(users => {
@@ -26,11 +29,22 @@ export class FavouritesComponent {
       this.isFavourite = !this.isFavourite;
    }
 
-   onSubmit() {
-      this.dataService.addUser(this.user).subscribe(user => {
-         console.log(user);
-         this.users.unshift(user)
-      })
+   onSubmit(isEdit) {
+      if (isEdit) {
+         this.dataService.updateUser(this.user).subscribe(user => {
+            this.users.forEach((user, i) => {
+               if (this.users[i].id === user.id) {
+                  this.users.splice(i, 1)
+               }
+            })
+         this.users.unshift(this.user)
+         })
+      } else {
+         this.dataService.addUser(this.user).subscribe(user => {
+            console.log(user);
+            this.users.unshift(user)
+         })
+      }
    }
 
    onDelete(id) {
@@ -42,4 +56,10 @@ export class FavouritesComponent {
          })
       })
    }
+   
+   onEdit(user) {
+      this.isEdit = true;
+      this.user = user
+   }
+   
 }

@@ -28,6 +28,11 @@ export class DataService {
          .map(res => res.json())
    }
    
+   updateUser(user) {
+      return this.http.put('http://jsonplaceholder.typicode.com/users/' + user.id, user)
+         .map(res => res.json())
+   }
+   
    getUsersTest() {
       return this.users
    }
