@@ -2,7 +2,7 @@ import { DataService } from './services/data.service';
 import { CoursesService } from './components/courses/courses.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
@@ -25,7 +25,8 @@ import { SignupFormComponent } from './components/signup-form/signup-form/signup
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [CoursesService, DataService],
   bootstrap: [AppComponent]
